@@ -10,9 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Type</th>
                 <th>Email</th>
-                <th>IsActive</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,9 +19,7 @@
             <tr>
                 <td>{{ client.id }}</td>
                 <td>{{ client.name }}</td>
-                <td>{{ client.type }}</td>
                 <td>{{ client.email }}</td>
-                <td>{{ client.isActive ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
                     <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
@@ -31,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
