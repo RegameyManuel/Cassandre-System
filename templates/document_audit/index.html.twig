@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DocumentAudit index{% endblock %}
+
+{% block body %}
+    <h1>DocumentAudit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Info</th>
+                <th>Extension</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document_audit in document_audits %}
+            <tr>
+                <td>{{ document_audit.id }}</td>
+                <td>{{ document_audit.name }}</td>
+                <td>{{ document_audit.path }}</td>
+                <td>{{ document_audit.info }}</td>
+                <td>{{ document_audit.extension }}</td>
+                <td>
+                    <a href="{{ path('app_document_audit_show', {'id': document_audit.id}) }}">show</a>
+                    <a href="{{ path('app_document_audit_edit', {'id': document_audit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_document_audit_new') }}">Create new</a>
+{% endblock %}
