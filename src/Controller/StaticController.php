@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class StaticController extends AbstractController
 {
@@ -60,6 +61,13 @@ final class StaticController extends AbstractController
     {
         //mauvaise identification ->
         throw new AuthenticationException();
+    } 
+
+    #[Route('/test-error', name: 'test_error')]
+    public function testError(): Response
+    {
+        //mauvaise identification ->
+        throw new HttpException(403);
     } 
 
     #[Route('/test-granted', name: 'test_granted'), IsGranted('ROLE_ADMIN')]
